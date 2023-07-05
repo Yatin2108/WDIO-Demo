@@ -1,0 +1,42 @@
+pipeline {
+  agent any
+  tools {nodejs "node"}
+
+  stages {
+    // stage('Checkout') {
+    //   steps {
+    //     // Checkout your code repository
+    //     git 'https://github.com/Yatin2108/WDIO-Demo.git'
+    //   }
+    // }
+
+    // stage('Install dependencies') {
+    //   steps {
+    //     // Install Node.js and dependencies
+    //     sh 'curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -'
+    //     sh 'sudo apt-get install -y nodejs'
+    //     sh 'npm install'
+    //   }
+    // }
+
+    stage('Run tests') {
+      steps {
+            browserstack(credentialsId: '2ea2e6ca-543f-4c8f-95c5-14804f685d9e') {
+               sh 'npm install'
+               sh 'npm run test'
+
+            }
+            browserStackReportPublisher 'automate'
+         }
+
+      
+    }
+  }
+}
+
+
+
+
+
+
+
