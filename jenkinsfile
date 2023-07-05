@@ -22,6 +22,7 @@ pipeline {
     stage('Run tests') {
       steps {
             browserstack(credentialsId: '2ea2e6ca-543f-4c8f-95c5-14804f685d9e') {
+               sh 'export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:$PATH'
                sh 'npm install'
                sh 'npm run test'
 
