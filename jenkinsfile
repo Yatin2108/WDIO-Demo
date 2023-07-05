@@ -13,8 +13,11 @@ pipeline {
     stage('Install dependencies') {
       steps {
         // Install Node.js and dependencies
-        sh 'curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -'
-        sh 'sudo apt-get install -y nodejs'
+        sh '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"'
+        sh 'brew install nvm'
+        sh 'source $(brew --prefix nvm)/nvm.sh'
+        sh 'nvm install node'
+        sh 'nvm install 16'
 
       }
     }
