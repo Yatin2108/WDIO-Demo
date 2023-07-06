@@ -1,5 +1,7 @@
 pipeline {
   agent any
+  tools {nodejs "node"}
+
   
 
   stages {
@@ -9,14 +11,12 @@ pipeline {
     //     git 'https://github.com/Yatin2108/WDIO-Demo.git'
     //   }
     // }
-
-    stage('Install dependencies') {
-     steps {
-                nodejs(nodeJSInstallationName: 'Node 6.x') {
-                    sh 'npm config ls'
-                }
-    }
-}
+    stage('Cloning Git') {
+      steps {
+        git 'https://github.com/Yatin2108/WDIO-Demo.git'
+      }
+    }  
+   
 
     stage('Run tests') {
       steps {
