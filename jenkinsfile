@@ -11,15 +11,10 @@ pipeline {
     // }
 
     stage('Install dependencies') {
-      steps {
-        // Install Node.js and dependencies
-        sh '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"'
-        sh 'brew install nvm'
-        sh 'source $(brew --prefix nvm)/nvm.sh'
-        sh 'nvm install node'
-        sh 'nvm install 16'
-
-      }
+     steps {
+                nodejs(nodeJSInstallationName: 'Node 6.x') {
+                    sh 'npm config ls'
+                }
     }
 
     stage('Run tests') {
