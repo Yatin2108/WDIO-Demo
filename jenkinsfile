@@ -5,18 +5,7 @@ pipeline {
   
 
   stages {
-    // stage('Checkout') {
-    //   steps {
-    //     // Checkout your code repository
-    //     git 'https://github.com/Yatin2108/WDIO-Demo.git'
-    //   }
-    // }
-    stage('Cloning Git') {
-      steps {
-        git 'https://github.com/Yatin2108/WDIO-Demo.git'
-      }
-    }  
-   
+     
 
     stage('Run tests') {
       steps {
